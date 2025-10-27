@@ -1,0 +1,10 @@
+def hello_world(request):
+    """HTTP Cloud Function with dynamic parameters."""
+    # Try to extract the "name" parameter from query string or JSON body
+    name = (request.args.get("name")
+            or (request.get_json(silent=True) or {}).get("name")
+            or "Guest")
+
+    # Construct dynamic message
+    message = f"Hi, {name}! Your Task 4: Deploy a Serverless Function to the Cloud is successful."
+    return message
